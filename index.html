@@ -6,370 +6,340 @@
     <title>Dr. Muralikrishnan B — Pracademic</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #08080a;
-            --bg-secondary: #0f0f12;
-            --bg-card: #16161a;
-            --bg-elevated: #1c1c22;
-            --text-primary: #fafafa;
+            --bg-deep: #050507;
+            --bg-primary: #0a0a0d;
+            --bg-elevated: #111115;
+            --bg-card: #18181d;
+            --text-primary: #f4f4f5;
             --text-secondary: #a1a1aa;
-            --text-muted: #71717a;
-            --accent-gold: #d4a853;
-            --accent-gold-subtle: rgba(212, 168, 83, 0.15);
-            --accent-gold-glow: rgba(212, 168, 83, 0.4);
-            --border-subtle: rgba(255, 255, 255, 0.06);
-            --border-light: rgba(255, 255, 255, 0.1);
+            --text-muted: #6b6b70;
+            --accent: #c9a962;
+            --accent-subtle: rgba(201, 169, 98, 0.12);
+            --accent-soft: rgba(201, 169, 98, 0.4);
+            --border: rgba(255, 255, 255, 0.04);
+            --border-light: rgba(255, 255, 255, 0.08);
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
+        html { scroll-behavior: smooth; }
+        
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-primary);
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-deep);
             color: var(--text-primary);
-            line-height: 1.7;
+            line-height: 1.75;
             min-height: 100vh;
-            overflow-x: hidden;
+            font-weight: 300;
+            letter-spacing: 0.01em;
         }
         
+        /* Ambient background */
         body::before {
             content: '';
             position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
+            inset: 0;
             background: 
-                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(212, 168, 83, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse 60% 40% at 80% 100%, rgba(212, 168, 83, 0.05) 0%, transparent 40%);
+                radial-gradient(ellipse 100% 60% at 50% 0%, rgba(201, 169, 98, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse 80% 40% at 20% 100%, rgba(201, 169, 98, 0.03) 0%, transparent 50%);
             pointer-events: none;
             z-index: -1;
         }
         
-        .container { max-width: 680px; margin: 0 auto; padding: 0 1.25rem; }
+        .container { max-width: 640px; margin: 0 auto; padding: 0 1.5rem; }
         
+        /* Hero */
         .hero {
-            padding: 3rem 0 2rem;
+            padding: 4rem 0 3rem;
             text-align: center;
-            position: relative;
         }
         
-        .profile-wrapper {
+        .profile-container {
             position: relative;
             display: inline-block;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
         
         .profile-pic {
-            width: 110px;
-            height: 110px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid var(--accent-gold);
-            box-shadow: 0 0 30px var(--accent-gold-glow), 0 0 60px rgba(212, 168, 83, 0.2);
-            animation: profile-glow 4s ease-in-out infinite;
+            border: 1px solid var(--accent);
+            display: block;
         }
         
-        @keyframes profile-glow {
-            0%, 100% { box-shadow: 0 0 30px var(--accent-gold-glow), 0 0 60px rgba(212, 168, 83, 0.2); }
-            50% { box-shadow: 0 0 40px var(--accent-gold-glow), 0 0 80px rgba(212, 168, 83, 0.3); }
-        }
-        
-        .profile-ring {
+        .profile-glow {
             position: absolute;
-            inset: -4px;
+            inset: -8px;
             border-radius: 50%;
-            border: 1px solid var(--accent-gold);
-            opacity: 0.3;
-            animation: ring-pulse 3s ease-in-out infinite;
+            background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+            animation: glow-pulse 6s ease-in-out infinite;
+            opacity: 0.5;
         }
         
-        @keyframes ring-pulse {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.05); opacity: 0.15; }
+        @keyframes glow-pulse {
+            0%, 100% { transform: scale(1); opacity: 0.4; }
+            50% { transform: scale(1.1); opacity: 0.6; }
         }
         
         .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
             font-weight: 500;
-            letter-spacing: 0.02em;
-            margin-bottom: 0.25rem;
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-gold) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
         }
         
         .hero .tagline {
-            font-size: 0.85rem;
-            color: var(--accent-gold);
-            font-weight: 400;
-            letter-spacing: 0.15em;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            margin-bottom: 1rem;
+            letter-spacing: 0.35em;
+            color: var(--accent);
+            font-weight: 400;
+            margin-bottom: 1.25rem;
         }
         
         .hero-summary {
             color: var(--text-secondary);
-            font-size: 0.85rem;
-            max-width: 480px;
+            font-size: 0.9rem;
+            line-height: 1.9;
+            max-width: 440px;
             margin: 0 auto;
-            text-align: left;
-            line-height: 1.8;
+            font-weight: 300;
         }
         
-        .nav-tabs {
+        /* Navigation */
+        .nav {
             position: sticky;
             top: 0;
-            background: linear-gradient(180deg, var(--bg-primary) 70%, transparent);
-            padding: 1rem 0 1.25rem;
-            z-index: 100;
-            margin-bottom: 0.5rem;
+            background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-deep) 80%, transparent 100%);
+            padding: 1.25rem 0 1.5rem;
+            z-index: 50;
+            margin-bottom: 1rem;
         }
         
-        .tabs-container {
+        .nav-inner {
             display: flex;
-            gap: 0.3rem;
+            gap: 0.25rem;
             overflow-x: auto;
-            padding: 0.25rem;
-            background: var(--bg-secondary);
-            border-radius: 3rem;
-            border: 1px solid var(--border-subtle);
-            scrollbar-width: none;
-            -ms-overflow-style: none;
+            padding: 0.35rem;
+            background: var(--bg-elevated);
+            border-radius: 2rem;
+            border: 1px solid var(--border);
         }
         
-        .tabs-container::-webkit-scrollbar { display: none; }
+        .nav-inner::-webkit-scrollbar { display: none; }
         
         .tab {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            padding: 0.55rem 0.9rem;
+            padding: 0.5rem 0.85rem;
             background: transparent;
             border: none;
             color: var(--text-muted);
-            font-size: 0.68rem;
-            font-weight: 500;
+            font-size: 0.65rem;
+            font-weight: 400;
             cursor: pointer;
-            border-radius: 2rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 1.5rem;
             white-space: nowrap;
-            flex-shrink: 0;
-            letter-spacing: 0.02em;
+            transition: all 0.4s ease;
+            letter-spacing: 0.05em;
         }
         
-        .tab:hover { color: var(--text-secondary); background: var(--bg-card); }
+        .tab:hover { color: var(--text-secondary); }
         
         .tab.active {
-            background: linear-gradient(135deg, var(--accent-gold) 0%, #b8923f 100%);
-            color: var(--bg-primary);
-            font-weight: 600;
-            box-shadow: 0 4px 15px var(--accent-gold-glow);
+            background: var(--accent);
+            color: var(--bg-deep);
+            font-weight: 500;
         }
         
-        .content { display: none; animation: fadeIn 0.4s ease; }
+        /* Content */
+        .content { display: none; animation: fadeUp 0.5s ease; }
         .content.active { display: block; }
         
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
-        .section {
-            background: var(--bg-secondary);
-            border-radius: 1rem;
+        .card {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
             padding: 1.5rem;
             margin-bottom: 1rem;
-            border: 1px solid var(--border-subtle);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
-            opacity: 0.3;
         }
         
         h2 {
-            font-size: 0.65rem;
-            font-weight: 600;
+            font-size: 0.6rem;
+            font-weight: 500;
             text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--accent-gold);
-            margin-bottom: 1.25rem;
+            letter-spacing: 0.2em;
+            color: var(--accent);
+            margin-bottom: 1rem;
         }
         
-        .narrative {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.25rem;
-            border-bottom: 1px solid var(--border-subtle);
-        }
+        /* Narrative sections */
+        .narrative { margin-bottom: 1.75rem; }
+        .narrative:last-child { margin-bottom: 0; }
         
-        .narrative:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
         .narrative h2 { margin-bottom: 0.6rem; }
-        .narrative p { color: var(--text-secondary); font-size: 0.82rem; line-height: 1.8; }
-        .narrative strong { color: var(--text-primary); font-weight: 500; }
-        .narrative em { color: var(--accent-gold); font-style: normal; }
         
-        .expertise-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .narrative p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 2;
+            font-weight: 300;
+        }
+        
+        .narrative strong { color: var(--text-primary); font-weight: 400; }
+        .narrative em { color: var(--accent); font-style: normal; }
+        
+        /* Tags */
+        .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
         
         .tag {
-            font-size: 0.65rem;
-            padding: 0.35rem 0.65rem;
+            font-size: 0.6rem;
+            padding: 0.35rem 0.6rem;
             background: var(--bg-card);
             border: 1px solid var(--border-light);
-            color: var(--text-secondary);
-            border-radius: 0.25rem;
-            transition: all 0.2s;
+            color: var(--text-muted);
+            border-radius: 0.2rem;
+            transition: all 0.3s;
         }
         
-        .tag:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
+        .tag:hover { border-color: var(--accent); color: var(--accent); }
         
-        .audience-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+        /* Audience cards */
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
         
-        .audience-card {
+        .card-sm {
             background: var(--bg-card);
-            border-radius: 0.7rem;
-            padding: 1rem;
-            border: 1px solid var(--border-subtle);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            padding: 0.9rem;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
         
-        .audience-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 3px;
-            height: 100%;
-            background: var(--accent-gold);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
+        .card-sm:hover { border-color: var(--border-light); transform: translateY(-2px); }
+        .card-sm h3 { font-size: 0.78rem; font-weight: 500; margin-bottom: 0.3rem; color: var(--text-primary); }
+        .card-sm p { font-size: 0.68rem; color: var(--text-muted); line-height: 1.6; }
         
-        .audience-card:hover { border-color: var(--border-light); transform: translateY(-2px); }
-        .audience-card:hover::before { opacity: 0.6; }
-        .audience-card h3 { font-size: 0.8rem; font-weight: 500; margin-bottom: 0.35rem; color: var(--text-primary); }
-        .audience-card p { font-size: 0.72rem; color: var(--text-muted); line-height: 1.6; }
-        
-        .role {
+        /* Experience timeline */
+        .item {
             padding: 1rem 0;
-            border-bottom: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border);
             position: relative;
-            padding-left: 1.25rem;
+            padding-left: 1rem;
         }
         
-        .role::before {
+        .item::before {
             content: '';
             position: absolute;
             left: 0;
             top: 1.25rem;
-            width: 6px;
-            height: 6px;
+            width: 4px;
+            height: 4px;
             border-radius: 50%;
-            background: var(--accent-gold);
-            opacity: 0.6;
+            background: var(--accent);
         }
         
-        .role:last-child { border-bottom: none; }
-        .role-header { display: flex; justify-content: space-between; align-items: baseline; }
-        .role-title { font-weight: 500; font-size: 0.88rem; color: var(--text-primary); }
-        .role-org { color: var(--accent-gold); font-size: 0.78rem; margin: 0.2rem 0; }
-        .role-dates { color: var(--text-muted); font-size: 0.7rem; }
-        .role-details { color: var(--text-secondary); font-size: 0.78rem; margin-top: 0.4rem; line-height: 1.7; }
+        .item:last-child { border-bottom: none; }
         
-        .edu { display: flex; justify-content: space-between; padding: 0.85rem 0; border-bottom: 1px solid var(--border-subtle); }
-        .edu:last-child { border-bottom: none; }
-        .edu-degree { font-weight: 500; font-size: 0.85rem; color: var(--text-primary); }
-        .edu-school { color: var(--text-secondary); font-size: 0.75rem; }
-        .edu-year { color: var(--accent-gold); font-size: 0.75rem; }
+        .item-header { display: flex; justify-content: space-between; align-items: baseline; }
+        .item-title { font-weight: 400; font-size: 0.85rem; }
+        .item-org { color: var(--accent); font-size: 0.75rem; margin-top: 0.15rem; }
+        .item-dates { color: var(--text-muted); font-size: 0.7rem; }
+        .item-details { color: var(--text-secondary); font-size: 0.78rem; margin-top: 0.4rem; font-weight: 300; }
         
-        .advisory-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
-        .advisory-item { background: var(--bg-card); border-radius: 0.5rem; padding: 0.75rem; border: 1px solid var(--border-subtle); }
-        .advisory-role { font-weight: 500; font-size: 0.75rem; color: var(--text-primary); }
-        .advisory-org { color: var(--accent-gold); font-size: 0.7rem; margin-top: 0.1rem; }
-        .advisory-dates { color: var(--text-muted); font-size: 0.6rem; margin-top: 0.2rem; }
+        /* Education */
+        .edu-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+        }
         
-        .research-block { background: var(--bg-card); border-radius: 0.7rem; padding: 1rem; margin-bottom: 0.75rem; border: 1px solid var(--border-subtle); }
-        .research-block h3 { font-size: 0.85rem; font-weight: 500; margin-bottom: 0.4rem; color: var(--text-primary); }
-        .research-block p { color: var(--text-secondary); font-size: 0.75rem; margin-bottom: 0.5rem; }
-        .finding { padding: 0.35rem 0; color: var(--text-muted); font-size: 0.74rem; padding-left: 0.75rem; border-left: 2px solid var(--accent-gold-subtle); }
+        .edu-item:last-child { border-bottom: none; }
+        .edu-degree { font-weight: 400; font-size: 0.82rem; }
+        .edu-school { color: var(--text-muted); font-size: 0.72rem; }
+        .edu-year { color: var(--accent); font-size: 0.72rem; }
         
-        .pub { padding: 0.7rem 0; border-bottom: 1px solid var(--border-subtle); }
+        /* Research */
+        .research { background: var(--bg-card); border-radius: 0.6rem; padding: 1rem; margin-bottom: 0.75rem; border: 1px solid var(--border); }
+        .research h3 { font-size: 0.82rem; font-weight: 400; margin-bottom: 0.4rem; }
+        .research p { color: var(--text-secondary); font-size: 0.74rem; font-weight: 300; }
+        .finding { padding: 0.3rem 0; color: var(--text-muted); font-size: 0.72rem; padding-left: 0.6rem; border-left: 2px solid var(--accent-subtle); }
+        
+        /* Publications */
+        .pub { padding: 0.65rem 0; border-bottom: 1px solid var(--border); }
         .pub:last-child { border-bottom: none; }
-        .pub-title { font-weight: 500; font-size: 0.82rem; color: var(--text-primary); }
-        .pub-meta { color: var(--text-muted); font-size: 0.7rem; margin-top: 0.15rem; }
+        .pub-title { font-weight: 400; font-size: 0.8rem; }
+        .pub-meta { color: var(--text-muted); font-size: 0.68rem; margin-top: 0.15rem; }
         
-        .teach { display: flex; justify-content: space-between; padding: 0.65rem 0; border-bottom: 1px solid var(--border-subtle); }
+        /* Teaching */
+        .teach { display: flex; justify-content: space-between; padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
         .teach:last-child { border-bottom: none; }
-        .teach-course { font-weight: 500; font-size: 0.8rem; color: var(--text-primary); }
-        .teach-meta { color: var(--text-muted); font-size: 0.7rem; }
+        .teach-course { font-weight: 400; font-size: 0.78rem; }
+        .teach-meta { color: var(--text-muted); font-size: 0.68rem; }
         
-        .thought-block { background: var(--bg-card); border-radius: 0.7rem; padding: 1rem; margin-bottom: 0.75rem; border: 1px solid var(--border-subtle); }
-        .thought-block h3 { font-size: 0.8rem; font-weight: 500; margin-bottom: 0.4rem; color: var(--text-primary); }
-        .thought-topics { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.5rem; }
-        .thought-topic { font-size: 0.6rem; padding: 0.2rem 0.45rem; background: var(--bg-elevated); color: var(--text-muted); border-radius: 0.2rem; border: 1px solid var(--border-subtle); }
-        .thought-stats { display: flex; gap: 1rem; margin-top: 0.4rem; }
+        /* Thought leadership */
+        .topic-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.5rem; }
+        .topic { font-size: 0.6rem; padding: 0.2rem 0.4rem; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-muted); border-radius: 0.15rem; }
+        
+        .stats { display: flex; gap: 1.5rem; margin-top: 0.5rem; }
         .stat { font-size: 0.7rem; }
-        .stat strong { color: var(--accent-gold); }
+        .stat strong { color: var(--accent); }
         .stat span { color: var(--text-muted); }
-        .social-links { display: flex; gap: 0.4rem; margin-top: 0.6rem; }
-        .social-link { font-size: 0.65rem; color: var(--text-secondary); text-decoration: none; padding: 0.3rem 0.6rem; background: var(--bg-card); border-radius: 0.25rem; border: 1px solid var(--border-subtle); transition: all 0.2s; }
-        .social-link:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
         
-        .links { display: flex; gap: 0.5rem; justify-content: center; padding: 2rem 0; flex-wrap: wrap; }
-        .links a { color: var(--text-muted); text-decoration: none; font-size: 0.75rem; padding: 0.5rem 1rem; background: var(--bg-secondary); border-radius: 2rem; border: 1px solid var(--border-subtle); transition: all 0.3s; }
-        .links a:hover { color: var(--accent-gold); border-color: var(--accent-gold); box-shadow: 0 0 20px var(--accent-gold-subtle); }
+        .social { display: flex; gap: 0.4rem; margin-top: 0.6rem; }
+        .social a { font-size: 0.62rem; color: var(--text-muted); text-decoration: none; padding: 0.3rem 0.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 0.2rem; transition: all 0.3s; }
+        .social a:hover { border-color: var(--accent); color: var(--accent); }
         
-        footer { text-align: center; padding: 1.5rem 0 2rem; color: var(--text-muted); font-size: 0.65rem; }
+        /* Footer links */
+        .links { display: flex; gap: 0.5rem; justify-content: center; padding: 2.5rem 0; flex-wrap: wrap; }
+        .links a { color: var(--text-muted); text-decoration: none; font-size: 0.72rem; padding: 0.45rem 0.9rem; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 2rem; transition: all 0.3s; }
+        .links a:hover { color: var(--accent); border-color: var(--accent); }
+        
+        footer { text-align: center; padding-bottom: 2rem; color: var(--text-muted); font-size: 0.6rem; }
         
         @media (max-width: 600px) {
-            .hero h1 { font-size: 1.6rem; }
-            .audience-grid { grid-template-columns: 1fr; }
-            .advisory-grid { grid-template-columns: 1fr; }
-            .tab { padding: 0.45rem 0.7rem; font-size: 0.6rem; }
+            .hero h1 { font-size: 1.8rem; }
+            .grid-2 { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header class="hero">
-            <div class="profile-wrapper">
+            <div class="profile-container">
+                <div class="profile-glow"></div>
                 <img src="profile.jpg" alt="Dr. Muralikrishnan B" class="profile-pic">
-                <div class="profile-ring"></div>
             </div>
             <h1>Dr. Muralikrishnan B</h1>
             <p class="tagline">Pracademic</p>
-            <div class="hero-summary">27 years building consumer businesses. Now scholar, advisor, and investor — bridging theory and practice to help organizations scale.</div>
+            <p class="hero-summary">27 years building consumer businesses. Now scholar, advisor, and investor — bridging theory and practice to help organizations scale.</p>
         </header>
 
-        <nav class="nav-tabs">
-            <div class="tabs-container">
-                <button class="tab active" onclick="showTab('summary')"><span class="tab-icon">✦</span> Summary</button>
-                <button class="tab" onclick="showTab('experience')"><span class="tab-icon">✦</span> Experience</button>
-                <button class="tab" onclick="showTab('education')"><span class="tab-icon">✦</span> Education</button>
-                <button class="tab" onclick="showTab('advisory')"><span class="tab-icon">✦</span> Advisory</button>
-                <button class="tab" onclick="showTab('research')"><span class="tab-icon">✦</span> Research</button>
-                <button class="tab" onclick="showTab('publications')"><span class="tab-icon">✦</span> Publications</button>
-                <button class="tab" onclick="showTab('teaching')"><span class="tab-icon">✦</span> Teaching</button>
-                <button class="tab" onclick="showTab('thoughtleadership')"><span class="tab-icon">✦</span> Thought Leadership</button>
+        <nav class="nav">
+            <div class="nav-inner">
+                <button class="tab active" onclick="showTab('summary')">Summary</button>
+                <button class="tab" onclick="showTab('experience')">Experience</button>
+                <button class="tab" onclick="showTab('education')">Education</button>
+                <button class="tab" onclick="showTab('advisory')">Advisory</button>
+                <button class="tab" onclick="showTab('research')">Research</button>
+                <button class="tab" onclick="showTab('publications')">Publications</button>
+                <button class="tab" onclick="showTab('teaching')">Teaching</button>
+                <button class="tab" onclick="showTab('thoughtleadership')">Thought Leadership</button>
             </div>
         </nav>
 
         <div id="summary" class="content active">
-            <div class="section">
+            <div class="card">
                 <div class="narrative">
                     <h2>The Operator</h2>
                     <p>I spent 27 years scaling consumer businesses from tens of millions to billions. At <strong>Xiaomi India</strong>, I led operations, offline sales, and retail across 10,000+ touchpoints — scaling market share to leadership. At <strong>Myntra-Jabong</strong> (Flipkart Group), I ran a 400+ person organization. At <strong>eBay</strong>, I built categories from scratch across India, Philippines & Malaysia.</p>
@@ -386,8 +356,9 @@
                     <h2>The Athlete</h2>
                     <p>Endurance sports (3:33 marathon, 1:38 half, Ironman 70.3) aren't just fitness — they're a laboratory for discipline, goal-setting, and pushing limits.</p>
                 </div>
+                
                 <h2>Expertise</h2>
-                <div class="expertise-tags">
+                <div class="tags">
                     <span class="tag">Platform Economics</span>
                     <span class="tag">User Lock-in</span>
                     <span class="tag">Network Effects</span>
@@ -398,79 +369,98 @@
                     <span class="tag">P&L Management</span>
                     <span class="tag">Governance</span>
                 </div>
+                
                 <h2 style="margin-top: 1.5rem;">Who I Work With</h2>
-                <div class="audience-grid">
-                    <div class="audience-card"><h3>🎓 B-Schools</h3><p>Visiting faculty at ISB, IIT Kanpur. Teaching leadership & platform strategy.</p></div>
-                    <div class="audience-card"><h3>🏢 Companies</h3><p>Strategic advisory on digital transformation & operations.</p></div>
-                    <div class="audience-card"><h3>🚀 Startups</h3><p>Angel investments + operational mentorship to scale.</p></div>
-                    <div class="audience-card"><h3>💰 VC Funds</h3><p>LP, Advisory, Investment Committee. Due diligence expertise.</p></div>
-                    <div class="audience-card"><h3>🏛️ Boards</h3><p>Independent Director. Governance & regulatory expertise.</p></div>
-                    <div class="audience-card"><h3>📚 Research</h3><p>Platform ecosystems, switching costs, consumer lock-in.</p></div>
+                <div class="grid-2">
+                    <div class="card-sm"><h3>🎓 B-Schools</h3><p>Visiting faculty at ISB, IIT Kanpur. Teaching leadership & platform strategy.</p></div>
+                    <div class="card-sm"><h3>🏢 Companies</h3><p>Strategic advisory on digital transformation & operations.</p></div>
+                    <div class="card-sm"><h3>🚀 Startups</h3><p>Angel investments + operational mentorship to scale.</p></div>
+                    <div class="card-sm"><h3>💰 VC Funds</h3><p>LP, Advisory, Investment Committee. Due diligence expertise.</p></div>
+                    <div class="card-sm"><h3>🏛️ Boards</h3><p>Independent Director. Governance & regulatory expertise.</p></div>
+                    <div class="card-sm"><h3>📚 Research</h3><p>Platform ecosystems, switching costs, consumer lock-in.</p></div>
                 </div>
             </div>
         </div>
 
         <div id="experience" class="content">
-            <div class="section">
+            <div class="card">
                 <h2>Experience</h2>
-                <div class="role">
-                    <div class="role-header"><div class="role-title">President, India Business</div><div class="role-dates">2018 – 2024</div></div>
-                    <div class="role-org">Xiaomi India</div>
-                    <div class="role-details">Led operations, services, offline sales, retail & public affairs. Scaled market share and doubled distribution.</div>
+                <div class="item">
+                    <div class="item-header"><div class="item-title">President, India Business</div><div class="item-dates">2018 – 2024</div></div>
+                    <div class="item-org">Xiaomi India</div>
+                    <div class="item-details">Led operations, services, offline sales, retail & public affairs. Scaled market share and doubled distribution.</div>
                 </div>
-                <div class="role">
-                    <div class="role-header"><div class="role-title">Chief Operating Officer</div><div class="role-dates">2016 – 2018</div></div>
-                    <div class="role-org">Myntra-Jabong (Flipkart Group)</div>
-                    <div class="role-details">Led 400+ member team across Technology, Product, Supply Chain & CX.</div>
+                <div class="item">
+                    <div class="item-header"><div class="item-title">Chief Operating Officer</div><div class="item-dates">2016 – 2018</div></div>
+                    <div class="item-org">Myntra-Jabong (Flipkart Group)</div>
+                    <div class="item-details">Led 400+ member team across Technology, Product, Supply Chain & CX.</div>
                 </div>
-                <div class="role">
-                    <div class="role-header"><div class="role-title">Country Manager</div><div class="role-dates">2005 – 2013</div></div>
-                    <div class="role-org">eBay Inc. (India, Philippines, Malaysia)</div>
-                    <div class="role-details">Full P&L ownership of India marketplaces business.</div>
+                <div class="item">
+                    <div class="item-header"><div class="item-title">Country Manager</div><div class="item-dates">2005 – 2013</div></div>
+                    <div class="item-org">eBay Inc. (India, Philippines, Malaysia)</div>
+                    <div class="item-details">Full P&L ownership of India marketplaces business.</div>
                 </div>
-                <div class="role"><div class="role-header"><div class="role-title">COO</div><div class="role-dates">2014 – 2016</div></div><div class="role-org">IndiaProperty.com</div></div>
-                <div class="role"><div class="role-header"><div class="role-title">Co-Founder</div><div class="role-dates">2013 – 2014</div></div><div class="role-org">Almond Wellness Tech (getfitgo.in)</div></div>
-                <div class="role"><div class="role-header"><div class="role-title">Early Career</div><div class="role-dates">1997 – 2000</div></div><div class="role-org">Asian Paints → Sify Ltd</div></div>
+                <div class="item">
+                    <div class="item-header"><div class="item-title">COO</div><div class="item-dates">2014 – 2016</div></div>
+                    <div class="item-org">IndiaProperty.com</div>
+                </div>
+                <div class="item">
+                    <div class="item-header"><div class="item-title">Co-Founder</div><div class="item-dates">2013 – 2014</div></div>
+                    <div class="item-org">Almond Wellness Tech (getfitgo.in)</div>
+                </div>
+                <div class="item">
+                    <div class="item-header"><div class="item-title">Early Career</div><div class="item-dates">1997 – 2000</div></div>
+                    <div class="item-org">Asian Paints → Sify Ltd</div>
+                </div>
             </div>
         </div>
 
         <div id="education" class="content">
-            <div class="section">
+            <div class="card">
                 <h2>Education</h2>
-                <div class="edu"><div><div class="edu-degree">Executive Fellow (DBA)</div><div class="edu-school">Indian School of Business, Hyderabad</div></div><div class="edu-year">2025</div></div>
-                <div class="edu"><div><div class="edu-degree">PGDM</div><div class="edu-school">IIM Calcutta</div></div><div class="edu-year">1997</div></div>
-                <div class="edu"><div><div class="edu-degree">BE (Mechanical)</div><div class="edu-school">Osmania University, Hyderabad</div></div><div class="edu-year">1995</div></div>
+                <div class="edu-item">
+                    <div><div class="edu-degree">Executive Fellow (DBA)</div><div class="edu-school">Indian School of Business, Hyderabad</div></div>
+                    <div class="edu-year">2025</div>
+                </div>
+                <div class="edu-item">
+                    <div><div class="edu-degree">PGDM</div><div class="edu-school">IIM Calcutta</div></div>
+                    <div class="edu-year">1997</div>
+                </div>
+                <div class="edu-item">
+                    <div><div class="edu-degree">BE (Mechanical)</div><div class="edu-school">Osmania University, Hyderabad</div></div>
+                    <div class="edu-year">1995</div>
+                </div>
             </div>
         </div>
 
         <div id="advisory" class="content">
-            <div class="section">
+            <div class="card">
                 <h2>Advisory & Leadership</h2>
-                <div class="advisory-grid">
-                    <div class="advisory-item"><div class="advisory-role">Investment Committee</div><div class="advisory-org">D2C Super Angels Fund</div><div class="advisory-dates">Jul 2025 – Present</div></div>
-                    <div class="advisory-item"><div class="advisory-role">Advisory Board</div><div class="advisory-org">Code to Enhance Learning</div><div class="advisory-dates">Dec 2025 – Present</div></div>
-                    <div class="advisory-item"><div class="advisory-role">Ombudsman</div><div class="advisory-org">RV University, Bangalore</div><div class="advisory-dates">2026</div></div>
-                    <div class="advisory-item"><div class="advisory-role">Executive Fellow</div><div class="advisory-org">Indian School of Business</div><div class="advisory-dates">Current</div></div>
-                    <div class="advisory-item"><div class="advisory-role">Curator</div><div class="advisory-org">the hawkeye project</div><div class="advisory-dates">Jan 2025 – Present</div></div>
-                    <div class="advisory-item"><div class="advisory-role">Chairman, Startups</div><div class="advisory-org">MAIT</div><div class="advisory-dates">2022–2023</div></div>
-                    <div class="advisory-item"><div class="advisory-role">Governing Council</div><div class="advisory-org">IAMAI</div><div class="advisory-dates">2011–2013</div></div>
-                    <div class="advisory-item"><div class="advisory-role">Early Stage Investor</div><div class="advisory-org">Various Startups</div><div class="advisory-dates">2017+</div></div>
+                <div class="grid-2">
+                    <div class="card-sm"><h3>Investment Committee</h3><p>D2C Super Angels Fund<br><small>Jul 2025 – Present</small></p></div>
+                    <div class="card-sm"><h3>Advisory Board</h3><p>Code to Enhance Learning<br><small>Dec 2025 – Present</small></p></div>
+                    <div class="card-sm"><h3>Ombudsman</h3><p>RV University, Bangalore<br><small>2026</small></p></div>
+                    <div class="card-sm"><h3>Executive Fellow</h3><p>Indian School of Business<br><small>Current</small></p></div>
+                    <div class="card-sm"><h3>Curator</h3><p>the hawkeye project<br><small>Jan 2025 – Present</small></p></div>
+                    <div class="card-sm"><h3>Chairman, Startups</h3><p>MAIT<br><small>2022–2023</small></p></div>
+                    <div class="card-sm"><h3>Governing Council</h3><p>IAMAI<br><small>2011–2013</small></p></div>
+                    <div class="card-sm"><h3>Early Stage Investor</h3><p>Various Startups<br><small>2017+</small></p></div>
                 </div>
             </div>
         </div>
 
         <div id="research" class="content">
-            <div class="section">
+            <div class="card">
                 <h2>Dissertation</h2>
-                <div class="research-block">
+                <div class="research">
                     <h3>The Many Roads to Hotel California: The Ecosystem Vortex</h3>
                     <p>ISB DBA (2022–2025). A socio-technical model explaining lock-in through three stages.</p>
                     <div class="finding">• Lock-in: Entry → Engagement → Entrapment</div>
                     <div class="finding">• Engagement is decisive (β=0.69)</div>
                     <div class="finding">• Habit beats switching costs 2.6× to 1</div>
                 </div>
-                <h2 style="margin-top: 1.25rem;">Research Interests</h2>
-                <div class="expertise-tags">
+                <h2 style="margin-top: 1rem;">Research Interests</h2>
+                <div class="tags">
                     <span class="tag">Platform Ecosystems</span><span class="tag">User Lock-in</span><span class="tag">Switching Costs</span>
                     <span class="tag">Network Effects</span><span class="tag">Portfolio Diffusion</span><span class="tag">Consumer Behavior</span><span class="tag">Habit Formation</span>
                 </div>
@@ -478,7 +468,7 @@
         </div>
 
         <div id="publications" class="content">
-            <div class="section">
+            <div class="card">
                 <h2>Publications</h2>
                 <div class="pub"><div class="pub-title">BigBasket and Quick Commerce</div><div class="pub-meta">Harvard Business School Case (ISB473) • 2025</div></div>
                 <div class="pub"><div class="pub-title">Consumer Electronics Retail</div><div class="pub-meta">Springer Book Chapter • Future of Retail Management • 2023</div></div>
@@ -487,37 +477,36 @@
         </div>
 
         <div id="teaching" class="content">
-            <div class="section">
+            <div class="card">
                 <h2>Teaching</h2>
-                <div class="teach"><div><div class="teach-course">Leadership at Scale & Organisation Culture</div><div class="teach-meta">IIT Kanpur • Graduate Program</div></div></div>
-                <div class="teach"><div><div class="teach-course">Disruptive Innovation & Entrepreneurship</div><div class="teach-meta">IIT Kanpur • Graduate Program</div></div></div>
-                <div class="teach"><div><div class="teach-course">Platform/Network Economy</div><div class="teach-meta">ISB PGP Pro</div></div></div>
-                <div class="teach"><div><div class="teach-course">Disruptive Innovation</div><div class="teach-meta">ISB LatitudE GCC Program</div></div></div>
+                <div class="teach"><div class="teach-course">Leadership at Scale & Organisation Culture</div><div class="teach-meta">IIT Kanpur</div></div>
+                <div class="teach"><div class="teach-course">Disruptive Innovation & Entrepreneurship</div><div class="teach-meta">IIT Kanpur</div></div>
+                <div class="teach"><div class="teach-course">Platform/Network Economy</div><div class="teach-meta">ISB PGP Pro</div></div>
+                <div class="teach"><div class="teach-course">Disruptive Innovation</div><div class="teach-meta">ISB LatitudE GCC</div></div>
             </div>
         </div>
 
         <div id="thoughtleadership" class="content">
-            <div class="section">
-                <h2>Topics</h2>
-                <div class="thought-block">
-                    <h3>Key Themes</h3>
-                    <div class="thought-topics">
-                        <span class="thought-topic">Platform Strategy</span><span class="thought-topic">India Tech Ecosystem</span>
-                        <span class="thought-topic">Electronics Manufacturing</span><span class="thought-topic">Consumer Behavior</span>
-                        <span class="thought-topic">Digital Transformation</span>
-                    </div>
+            <div class="card">
+                <h2>Key Themes</h2>
+                <div class="topic-tags">
+                    <span class="topic">Platform Strategy</span><span class="topic">India Tech Ecosystem</span>
+                    <span class="topic">Electronics Manufacturing</span><span class="topic">Consumer Behavior</span>
+                    <span class="topic">Digital Transformation</span>
                 </div>
+                
                 <h2 style="margin-top: 1rem;">the hawkeye project</h2>
-                <div class="thought-block">
+                <div class="research">
                     <p>Weekly curated readings across natural sciences, mathematics, economics, finance, history, and more.</p>
-                    <a href="https://thehawkeye.substack.com" class="social-link" style="display: inline-block;">Subscribe →</a>
+                    <a href="https://thehawkeye.substack.com" class="topic" style="display:inline-block;margin-top:0.5rem;text-decoration:none;">Subscribe →</a>
                 </div>
-                <h2 style="margin-top: 1rem;">Social</h2>
-                <div class="thought-stats"><div class="stat"><strong>18K</strong> <span>LinkedIn</span></div><div class="stat"><strong>@muralikrishnan</strong> <span>Twitter</span></div></div>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/muralikrishnan" class="social-link">LinkedIn</a>
-                    <a href="https://twitter.com/muralikrishnan" class="social-link">Twitter</a>
-                    <a href="https://thehawkeye.substack.com" class="social-link">Substack</a>
+                
+                <h2 style="margin-top: 1rem;">Presence</h2>
+                <div class="stats"><div class="stat"><strong>18K</strong> <span>LinkedIn</span></div><div class="stat"><strong>@muralikrishnan</strong> <span>Twitter</span></div></div>
+                <div class="social">
+                    <a href="https://www.linkedin.com/in/muralikrishnan">LinkedIn</a>
+                    <a href="https://twitter.com/muralikrishnan">Twitter</a>
+                    <a href="https://thehawkeye.substack.com">Substack</a>
                 </div>
             </div>
         </div>
@@ -537,8 +526,8 @@
             document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
-            event.currentTarget.classList.add('active');
-            document.querySelector('.nav-tabs').scrollIntoView({ behavior: 'smooth' });
+            event.target.classList.add('active');
+            document.querySelector('.nav').scrollIntoView({ behavior: 'smooth' });
         }
     </script>
 </body>
