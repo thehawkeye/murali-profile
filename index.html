@@ -3,608 +3,506 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Muralikrishnan B — Executive • Scholar • Athlete • Advisor</title>
+    <title>Dr. Muralikrishnan B — Executive • Scholar • Athlete</title>
     <style>
         :root {
-            --bg-primary: #0a0a0f;
-            --bg-secondary: #12121a;
-            --bg-card: #1a1a24;
-            --text-primary: #f0f0f5;
-            --text-secondary: #9090a0;
-            --accent-blue: #4a9eff;
-            --accent-purple: #a78bfa;
-            --accent-orange: #f97316;
-            --accent-green: #22c55e;
-            --accent-cyan: #06b6d4;
+            --bg: #0d0d12;
+            --bg-elevated: #14141a;
+            --bg-card: #1a1a22;
+            --text: #f5f5f7;
+            --text-secondary: #8e8e93;
+            --text-muted: #636366;
+            --accent: #007aff;
+            --accent-subtle: rgba(0, 122, 255, 0.1);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-light: rgba(255, 255, 255, 0.12);
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.7;
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
         }
         
-        .container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem; }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
         
-        /* Hero Section */
+        /* Hero */
         .hero {
-            padding: 4rem 0 2rem;
+            padding: 4rem 0 2.5rem;
             text-align: center;
         }
         
         .hero h1 {
-            font-size: 2.75rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 2.25rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.25rem;
         }
         
-        .hero .tagline {
-            font-size: 1.25rem;
+        .hero .subtitle {
+            font-size: 1rem;
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
         }
-        
-        .personas {
-            display: flex;
-            gap: 0.75rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-        
-        .persona {
-            padding: 0.4rem 1rem;
-            border-radius: 2rem;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-        
-        .persona.executive { background: rgba(74, 158, 255, 0.15); color: var(--accent-blue); }
-        .persona.scholar { background: rgba(167, 139, 250, 0.15); color: var(--accent-purple); }
-        .persona.athlete { background: rgba(249, 115, 22, 0.15); color: var(--accent-orange); }
-        .persona.advisor { background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); }
         
         .hero-summary {
-            max-width: 600px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            max-width: 500px;
             margin: 0 auto;
-            color: var(--text-secondary);
-            font-size: 1.05rem;
         }
         
-        /* Quick Stats */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-        
-        .stat {
-            background: var(--bg-card);
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 0.25rem;
+            background: var(--bg-elevated);
+            padding: 0.25rem;
             border-radius: 0.75rem;
-            padding: 1.25rem;
-            text-align: center;
-        }
-        
-        .stat-value {
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--accent-blue);
-        }
-        
-        .stat-label {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        
-        /* Section Styling */
-        section {
-            background: var(--bg-secondary);
-            border-radius: 1rem;
-            padding: 1.75rem;
             margin-bottom: 1.5rem;
+            overflow-x: auto;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        
+        .tab:hover { color: var(--text); }
+        
+        .tab.active {
+            background: var(--bg-card);
+            color: var(--text);
+        }
+        
+        /* Content */
+        .content { display: none; }
+        .content.active { display: block; }
+        
+        .section {
+            background: var(--bg-elevated);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
         }
         
         h2 {
-            font-size: 1.25rem;
-            color: var(--text-primary);
-            margin-bottom: 1.25rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
         }
         
-        h2 .icon { font-size: 1.1rem; }
-        
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding-left: 2rem;
+        /* Executive */
+        .role {
+            padding: 1rem 0;
+            border-bottom: var(--border);
         }
         
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--accent-blue), var(--accent-purple), var(--accent-orange));
+        .role:last-child { border-bottom: none; }
+        
+        .role-title { font-weight: 600; font-size: 1rem; }
+        .role-org { color: var(--accent); font-size: 0.9rem; margin: 0.15rem 0; }
+        .role-dates { color: var(--text-muted); font-size: 0.8rem; }
+        .role-details { color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.5rem; }
+        
+        /* Scholar */
+        .paper {
+            padding: 0.85rem 0;
+            border-bottom: var(--border);
         }
         
-        .timeline-item {
-            position: relative;
-            margin-bottom: 1.5rem;
-            padding-left: 1rem;
-        }
+        .paper:last-child { border-bottom: none; }
         
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -2rem;
-            top: 0.4rem;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--accent-blue);
-            border: 2px solid var(--bg-primary);
-        }
+        .paper-title { font-weight: 500; font-size: 0.95rem; }
+        .paper-meta { color: var(--text-secondary); font-size: 0.8rem; margin-top: 0.2rem; }
+        .paper-link { color: var(--accent); text-decoration: none; font-size: 0.8rem; }
         
-        .timeline-item.executive::before { background: var(--accent-blue); }
-        .timeline-item.academic::before { background: var(--accent-purple); }
-        
-        .timeline-title { font-weight: 600; color: var(--text-primary); }
-        
-        .timeline-org { color: var(--accent-blue); font-size: 0.95rem; }
-        
-        .timeline-dates { color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.25rem; }
-        
-        .timeline-details {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-        }
-        
-        /* Cards Grid */
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-        }
-        
-        .card {
+        .dissertation {
             background: var(--bg-card);
             border-radius: 0.75rem;
             padding: 1.25rem;
-            border-left: 3px solid var(--accent-blue);
+            margin-bottom: 1rem;
         }
         
-        .card.advisory { border-left-color: var(--accent-cyan); }
-        .card.research { border-left-color: var(--accent-purple); }
-        .card.teaching { border-left-color: var(--accent-green); }
-        
-        .card-title { font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem; }
-        .card-org { color: var(--accent-blue); font-size: 0.9rem; margin-bottom: 0.25rem; }
-        .card-meta { color: var(--text-secondary); font-size: 0.8rem; }
-        
-        /* Athlete Section */
-        .athlete-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+        .dissertation h3 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
         }
         
-        @media (max-width: 600px) { .athlete-grid { grid-template-columns: 1fr; } }
+        .dissertation p { color: var(--text-secondary); font-size: 0.85rem; }
         
-        .race-card {
-            background: var(--bg-card);
-            border-radius: 0.75rem;
-            padding: 1rem;
+        .finding {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--accent-subtle);
+            margin: 0.5rem 0;
+        }
+        
+        /* Athlete */
+        .race {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0.85rem 0;
+            border-bottom: var(--border);
         }
         
-        .race-info h4 { color: var(--text-primary); font-weight: 600; }
-        .race-info span { color: var(--text-secondary); font-size: 0.85rem; }
+        .race:last-child { border-bottom: none; }
+        
+        .race-info h4 { font-weight: 500; font-size: 0.95rem; }
+        .race-info span { color: var(--text-secondary); font-size: 0.8rem; }
         
         .race-badge {
-            padding: 0.25rem 0.75rem;
+            font-size: 0.7rem;
+            padding: 0.25rem 0.6rem;
             border-radius: 1rem;
-            font-size: 0.75rem;
-            font-weight: 600;
+            background: var(--accent-subtle);
+            color: var(--accent);
         }
         
-        .race-badge.completed { background: rgba(34, 197, 94, 0.15); color: var(--accent-green); }
-        .race-badge.target { background: rgba(249, 115, 22, 0.15); color: var(--accent-orange); }
-        
-        .athlete-stats {
+        /* Advisor */
+        .advisory-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 0.75rem;
-            margin-top: 1rem;
         }
         
-        .athlete-stat {
-            text-align: center;
-            padding: 0.75rem;
+        .advisory-item {
             background: var(--bg-card);
-            border-radius: 0.5rem;
+            border-radius: 0.6rem;
+            padding: 0.85rem;
         }
         
-        .athlete-stat-value { font-size: 1.25rem; font-weight: 700; color: var(--accent-orange); }
-        .athlete-stat-label { font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; }
+        .advisory-role { font-weight: 500; font-size: 0.85rem; }
+        .advisory-org { color: var(--accent); font-size: 0.8rem; margin-top: 0.15rem; }
+        .advisory-dates { color: var(--text-muted); font-size: 0.7rem; margin-top: 0.25rem; }
+        
+        /* Education */
+        .edu {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: var(--border);
+        }
+        
+        .edu:last-child { border-bottom: none; }
+        
+        .edu-degree { font-weight: 500; font-size: 0.9rem; }
+        .edu-school { color: var(--text-secondary); font-size: 0.8rem; }
+        .edu-year { color: var(--text-muted); font-size: 0.8rem; }
         
         /* Links */
         .links {
             display: flex;
-            gap: 1rem;
+            gap: 0.75rem;
             justify-content: center;
-            flex-wrap: wrap;
             padding: 2rem 0;
+            flex-wrap: wrap;
         }
         
         .links a {
-            color: var(--accent-blue);
+            color: var(--text-secondary);
             text-decoration: none;
-            padding: 0.6rem 1.25rem;
-            background: rgba(74, 158, 255, 0.1);
+            font-size: 0.85rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-elevated);
             border-radius: 2rem;
-            font-size: 0.9rem;
             transition: all 0.2s;
         }
         
-        .links a:hover { background: rgba(74, 158, 255, 0.2); transform: translateY(-2px); }
+        .links a:hover { color: var(--text); background: var(--bg-card); }
         
-        /* Papers */
-        .paper-item {
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        
-        .paper-item:last-child { border-bottom: none; }
-        
-        .paper-title { color: var(--text-primary); font-weight: 500; }
-        
-        .paper-meta { color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.25rem; }
-        
-        .paper-link {
-            color: var(--accent-blue);
-            text-decoration: none;
-            font-size: 0.85rem;
-        }
-        
-        /* Dissertation */
-        .dissertation { padding: 1rem 0; }
-        
-        .dissertation h3 { color: var(--accent-purple); margin-bottom: 1rem; }
-        
-        .abstract { color: var(--text-secondary); margin-bottom: 1.5rem; }
-        
-        .finding {
-            background: rgba(167, 139, 250, 0.08);
-            border-left: 3px solid var(--accent-purple);
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border-radius: 0 0.5rem 0.5rem 0;
-        }
-        
-        .finding-title {
-            color: var(--accent-purple);
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .finding p { color: var(--text-secondary); font-size: 0.9rem; }
-        
-        /* Footer */
         footer {
             text-align: center;
-            padding: 2rem 0;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
+            padding: 1rem 0 2rem;
+            color: var(--text-muted);
+            font-size: 0.75rem;
         }
         
         @media (max-width: 600px) {
-            .hero h1 { font-size: 2rem; }
-            .hero .tagline { font-size: 1rem; }
-            .stats { grid-template-columns: repeat(2, 1fr); }
+            .hero h1 { font-size: 1.75rem; }
+            .advisory-grid { grid-template-columns: 1fr; }
+            .tabs { gap: 0; }
+            .tab { padding: 0.6rem 0.5rem; font-size: 0.75rem; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Hero -->
-        <section class="hero">
+        <header class="hero">
             <h1>Dr. Muralikrishnan B</h1>
-            <p class="tagline">Former President, Xiaomi India</p>
-            
-            <div class="personas">
-                <span class="persona executive">🏢 Executive</span>
-                <span class="persona scholar">📚 Scholar</span>
-                <span class="persona athlete">🏃 Athlete</span>
-                <span class="persona advisor">🎯 Advisor</span>
-            </div>
-            
+            <p class="subtitle">Former President, Xiaomi India</p>
             <p class="hero-summary">
-                27 years building consumer businesses. Now scholar, athlete, and strategic advisor — helping organizations navigate platform ecosystems, digital strategy, and endurance performance.
+                27 years building consumer businesses. Now independent academic, advisor, and endurance athlete.
             </p>
-        </section>
+        </header>
 
-        <!-- Quick Stats -->
-        <div class="stats">
-            <div class="stat">
-                <div class="stat-value">27+</div>
-                <div class="stat-label">Years Experience</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value">3</div>
-                <div class="stat-label">CXO Roles</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value">2025</div>
-                <div class="stat-label">DBA Completed</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value">10+</div>
-                <div class="stat-label">Investments</div>
+        <nav class="tabs">
+            <button class="tab active" onclick="showTab('executive')">Executive</button>
+            <button class="tab" onclick="showTab('scholar')">Scholar</button>
+            <button class="tab" onclick="showTab('athlete')">Athlete</button>
+            <button class="tab" onclick="showTab('advisor')">Advisor</button>
+            <button class="tab" onclick="showTab('education')">Education</button>
+        </nav>
+
+        <!-- Executive -->
+        <div id="executive" class="content active">
+            <div class="section">
+                <h2>Leadership</h2>
+                <div class="role">
+                    <div class="role-title">President, India Business</div>
+                    <div class="role-org">Xiaomi India</div>
+                    <div class="role-dates">Jul 2018 – Dec 2024</div>
+                    <div class="role-details">Led operations, services, offline sales, retail & public affairs. Scaled market share and doubled distribution reach.</div>
+                </div>
+                <div class="role">
+                    <div class="role-title">Chief Operating Officer</div>
+                    <div class="role-org">Myntra-Jabong (Flipkart Group)</div>
+                    <div class="role-dates">Mar 2016 – May 2018</div>
+                    <div class="role-details">Led 400+ member team across Technology, Product, Supply Chain & CX.</div>
+                </div>
+                <div class="role">
+                    <div class="role-title">Country Manager – India, Philippines & Malaysia</div>
+                    <div class="role-org">eBay Inc.</div>
+                    <div class="role-dates">Aug 2005 – June 2013</div>
+                    <div class="role-details">Full P&L ownership of India marketplaces business.</div>
+                </div>
+                <div class="role">
+                    <div class="role-title">COO</div>
+                    <div class="role-org">IndiaProperty.com</div>
+                    <div class="role-dates">2014 – 2016</div>
+                </div>
+                <div class="role">
+                    <div class="role-title">Co-Founder</div>
+                    <div class="role-org">Almond Wellness Tech (getfitgo.in)</div>
+                    <div class="role-dates">2013 – 2014</div>
+                </div>
             </div>
         </div>
 
-        <!-- Career Timeline -->
-        <section>
-            <h2><span class="icon">💼</span> Executive Career</h2>
-            <div class="timeline">
-                <div class="timeline-item executive">
-                    <div class="timeline-title">President, India Business</div>
-                    <div class="timeline-org">Xiaomi India</div>
-                    <div class="timeline-dates">Jul 2018 – Dec 2024</div>
-                    <div class="timeline-details">Led operations, services, offline sales, retail & public affairs. Scaled market share and doubled distribution reach.</div>
-                </div>
-                <div class="timeline-item executive">
-                    <div class="timeline-title">Chief Operating Officer</div>
-                    <div class="timeline-org">Myntra-Jabong (Flipkart Group)</div>
-                    <div class="timeline-dates">Mar 2016 – May 2018</div>
-                    <div class="timeline-details">Led 400+ member team across Technology, Product, Supply Chain & CX.</div>
-                </div>
-                <div class="timeline-item executive">
-                    <div class="timeline-title">Country Manager – India, Philippines & Malaysia</div>
-                    <div class="timeline-org">eBay Inc.</div>
-                    <div class="timeline-dates">Aug 2005 – June 2013</div>
-                    <div class="timeline-details">Full P&L ownership of India marketplaces business.</div>
-                </div>
-                <div class="timeline-item executive">
-                    <div class="timeline-title">COO</div>
-                    <div class="timeline-org">IndiaProperty.com (Matrimony.com Group)</div>
-                    <div class="timeline-dates">2014 – 2016</div>
-                </div>
-                <div class="timeline-item executive">
-                    <div class="timeline-title">Co-Founder</div>
-                    <div class="timeline-org">Almond Wellness Tech (getfitgo.in)</div>
-                    <div class="timeline-dates">2013 – 2014</div>
+        <!-- Scholar -->
+        <div id="scholar" class="content">
+            <div class="section">
+                <h2>Dissertation</h2>
+                <div class="dissertation">
+                    <h3>The Ecosystem Vortex: Understanding Lock-in in Platform Ecosystems</h3>
+                    <p>ISB DBA (2022–2025). A socio-technical model integrating architectural and behavioral dynamics.</p>
+                    <div class="finding">• Lock-in engineered through Entry → Engagement → Entrapment</div>
+                    <div class="finding">• Engagement is the decisive variable (β=0.69)</div>
+                    <div class="finding">• Habit beats switching costs 2.6× to 1</div>
                 </div>
             </div>
-        </section>
-
-        <!-- Athlete Section -->
-        <section>
-            <h2><span class="icon">🏃</span> Athlete</h2>
-            <p style="color: var(--text-secondary); margin-bottom: 1rem;">
-                Endurance sports enthusiast. Triathlete. Evidence-based training with data-driven performance goals.
-            </p>
             
-            <div class="athlete-grid">
-                <div class="race-card">
+            <div class="section">
+                <h2>Publications</h2>
+                <div class="paper">
+                    <div class="paper-title">BigBasket and Quick Commerce</div>
+                    <div class="paper-meta">Harvard Business School Case (ISB473) • 2025</div>
+                </div>
+                <div class="paper">
+                    <div class="paper-title">Consumer Electronics Retail</div>
+                    <div class="paper-meta">Springer Book Chapter • Future of Retail Management • 2023</div>
+                </div>
+                <div class="paper">
+                    <div class="paper-title">Bitcoin Price & Consumer Behavior</div>
+                    <div class="paper-meta">ICIS Workshop on e-Business • Dec 2023</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Teaching</h2>
+                <div class="paper">
+                    <div class="paper-title">Leadership at Scale & Organisation Culture</div>
+                    <div class="paper-meta">IIT Kanpur • Graduate Program</div>
+                </div>
+                <div class="paper">
+                    <div class="paper-title">Disruptive Innovation & Entrepreneurship</div>
+                    <div class="paper-meta">IIT Kanpur • Graduate Program</div>
+                </div>
+                <div class="paper">
+                    <div class="paper-title">Platform/Network Economy</div>
+                    <div class="paper-meta">ISB PGP Pro • May 2025</div>
+                </div>
+                <div class="paper">
+                    <div class="paper-title">Disruptive Innovation</div>
+                    <div class="paper-meta">ISB LatitudE GCC • Feb 2026</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Athlete -->
+        <div id="athlete" class="content">
+            <div class="section">
+                <h2>Race Calendar 2025–2026</h2>
+                <div class="race">
                     <div class="race-info">
                         <h4>Delhi Half Marathon</h4>
-                        <span>Oct 12, 2025</span>
+                        <span>Oct 12, 2025 • Completed</span>
                     </div>
-                    <span class="race-badge completed">Completed</span>
                 </div>
-                <div class="race-card">
+                <div class="race">
                     <div class="race-info">
                         <h4>Ironman 70.3 Bahrain</h4>
-                        <span>Dec 2025</span>
+                        <span>Dec 2025 • Target: Sub-6:15</span>
                     </div>
-                    <span class="race-badge target">Target: Sub-6:15</span>
+                    <span class="race-badge">Target</span>
                 </div>
-                <div class="race-card">
+                <div class="race">
                     <div class="race-info">
                         <h4>Tata Steel Kolkata 25K</h4>
                         <span>Dec 14, 2025</span>
                     </div>
-                    <span class="race-badge target">Target</span>
                 </div>
-                <div class="race-card">
+                <div class="race">
                     <div class="race-info">
                         <h4>Tata Mumbai Marathon</h4>
-                        <span>Jan 18, 2026</span>
+                        <span>Jan 18, 2026 • Boston Qualifier</span>
                     </div>
-                    <span class="race-badge target">Target: Sub-3:25 (BQ)</span>
+                    <span class="race-badge">Target: Sub-3:25</span>
                 </div>
-                <div class="race-card">
+                <div class="race">
                     <div class="race-info">
                         <h4>Ironman 70.3 Duisburg</h4>
                         <span>Aug 2026</span>
                     </div>
-                    <span class="race-badge target">Target</span>
                 </div>
-                <div class="race-card">
+                <div class="race">
                     <div class="race-info">
                         <h4>Berlin Marathon</h4>
                         <span>Sep 2026</span>
                     </div>
-                    <span class="race-badge target">Target: Sub-3:20</span>
+                    <span class="race-badge">Target: Sub-3:20</span>
                 </div>
             </div>
             
-            <div class="athlete-stats">
-                <div class="athlete-stat">
-                    <div class="athlete-stat-value">50-65</div>
-                    <div class="athlete-stat-label">km/week (peak)</div>
+            <div class="section">
+                <h2>Goals</h2>
+                <div class="race">
+                    <div class="race-info">
+                        <h4>Half Marathon</h4>
+                        <span>Sub-1:40 (Boston qualifier)</span>
+                    </div>
                 </div>
-                <div class="athlete-stat">
-                    <div class="athlete-stat-value">1:40</div>
-                    <div class="athlete-stat-label">Half Marathon Goal</div>
+                <div class="race">
+                    <div class="race-info">
+                        <h4>Ironman 70.3</h4>
+                        <span>Sub-6:15</span>
+                    </div>
                 </div>
-                <div class="athlete-stat">
-                    <div class="athlete-stat-value">Sub-6:15</div>
-                    <div class="athlete-stat-label">IM 70.3 Goal</div>
+                <div class="race">
+                    <div class="race-info">
+                        <h4>Marathon</h4>
+                        <span>Sub-3:20 (Boston qualifier)</span>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- Academic -->
-        <section>
-            <h2><span class="icon">🎓</span> Academic & Research</h2>
-            
-            <div class="cards" style="margin-bottom: 1.5rem;">
-                <div class="card research">
-                    <div class="card-title">Harvard Business School Case</div>
-                    <div class="card-org">BigBasket and Quick Commerce</div>
-                    <div class="card-meta">Published Jan 2025 • ISB473</div>
-                </div>
-                <div class="card research">
-                    <div class="card-title">Springer Book Chapter</div>
-                    <div class="card-org">Consumer Electronics Retail</div>
-                    <div class="card-meta">Future of Retail Management • 2023</div>
-                </div>
-                <div class="card research">
-                    <div class="card-title">ICIS Workshop Paper</div>
-                    <div class="card-org">Bitcoin Price & Consumer Behavior</div>
-                    <div class="card-meta">Dec 2023 • Hyderabad</div>
-                </div>
-            </div>
-            
-            <div class="dissertation">
-                <h3>📖 Doctoral Dissertation: The Ecosystem Vortex</h3>
-                <p class="abstract">
-                    Understanding Portfolio Diffusion and Lock-in in Technology Platform Ecosystems. 
-                    A socio-technical model integrating architectural and behavioral dynamics explaining lock-in through three stages: Entry → Engagement → Entrapment.
-                </p>
-                
-                <div class="finding">
-                    <div class="finding-title">01 — Lock-in is engineered, not emergent</div>
-                    <p>Three-stage process — Entry, Engagement, Entrenchment — each compounding the next.</p>
-                </div>
-                <div class="finding">
-                    <div class="finding-title">02 — Ecosystem engagement is the decisive variable</div>
-                    <p>Full mediation (β=0.69): no direct path from adoption to lock-in without engagement.</p>
-                </div>
-                <div class="finding">
-                    <div class="finding-title">03 — Habit beats switching costs 2.6× to 1</div>
-                    <p>Behavioral inertia (w=0.79) dominates cognitive friction (w=0.30). The moat is automaticity.</p>
+        <!-- Advisor -->
+        <div id="advisor" class="content">
+            <div class="section">
+                <h2>Current Roles</h2>
+                <div class="advisory-grid">
+                    <div class="advisory-item">
+                        <div class="advisory-role">Investment Committee</div>
+                        <div class="advisory-org">D2C Super Angels Fund</div>
+                        <div class="advisory-dates">Jul 2025 – Present</div>
+                    </div>
+                    <div class="advisory-item">
+                        <div class="advisory-role">Advisory Board</div>
+                        <div class="advisory-org">Code to Enhance Learning</div>
+                        <div class="advisory-dates">Dec 2025 – Present</div>
+                    </div>
+                    <div class="advisory-item">
+                        <div class="advisory-role">Ombudsman</div>
+                        <div class="advisory-org">RV University</div>
+                        <div class="advisory-dates">2026</div>
+                    </div>
+                    <div class="advisory-item">
+                        <div class="advisory-role">Executive Fellow</div>
+                        <div class="advisory-org">Indian School of Business</div>
+                        <div class="advisory-dates">Current</div>
+                    </div>
+                    <div class="advisory-item">
+                        <div class="advisory-role">Curator</div>
+                        <div class="advisory-org">the hawkeye project</div>
+                        <div class="advisory-dates">Jan 2025 – Present</div>
+                    </div>
+                    <div class="advisory-item">
+                        <div class="advisory-role">Chairman, Startups</div>
+                        <div class="advisory-org">MAIT</div>
+                        <div class="advisory-dates">2022–2023</div>
+                    </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Teaching -->
-        <section>
-            <h2><span class="icon">📝</span> Teaching</h2>
-            <div class="cards">
-                <div class="card teaching">
-                    <div class="card-title">Leadership at Scale & Organisation Culture</div>
-                    <div class="card-org">IIT Kanpur</div>
-                    <div class="card-meta">Graduate Program</div>
-                </div>
-                <div class="card teaching">
-                    <div class="card-title">Disruptive Innovation & Entrepreneurship</div>
-                    <div class="card-org">IIT Kanpur</div>
-                    <div class="card-meta">Graduate Program</div>
-                </div>
-                <div class="card teaching">
-                    <div class="card-title">Platform/Network Economy</div>
-                    <div class="card-org">ISB PGP Pro</div>
-                    <div class="card-meta">May 2025</div>
-                </div>
-                <div class="card teaching">
-                    <div class="card-title">Disruptive Innovation</div>
-                    <div class="card-org">ISB LatitudE GCC</div>
-                    <div class="card-meta">Feb 2026</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Advisory -->
-        <section>
-            <h2><span class="icon">🎯</span> Advisory & Leadership</h2>
-            <div class="cards">
-                <div class="card advisory">
-                    <div class="card-title">Investment Committee Member</div>
-                    <div class="card-org">D2C Super Angels Fund</div>
-                    <div class="card-meta">Jul 2025 – Present</div>
-                </div>
-                <div class="card advisory">
-                    <div class="card-title">Advisory Board Member</div>
-                    <div class="card-org">Code to Enhance Learning</div>
-                    <div class="card-meta">Dec 2025 – Present</div>
-                </div>
-                <div class="card advisory">
-                    <div class="card-title">Ombudsman</div>
-                    <div class="card-org">RV University, Bangalore</div>
-                    <div class="card-meta">2026</div>
-                </div>
-                <div class="card advisory">
-                    <div class="card-title">Executive Fellow</div>
-                    <div class="card-org">Indian School of Business</div>
-                    <div class="card-meta">Current</div>
-                </div>
-                <div class="card advisory">
-                    <div class="card-title">Curator</div>
-                    <div class="card-org">the hawkeye project</div>
-                    <div class="card-meta">Jan 2025 – Present</div>
-                </div>
-                <div class="card advisory">
-                    <div class="card-title">Chairman, Startups</div>
-                    <div class="card-org">MAIT</div>
-                    <div class="card-meta">2022-2023</div>
-                </div>
-            </div>
-        </section>
+        </div>
 
         <!-- Education -->
-        <section>
-            <h2><span class="icon">🎓</span> Education</h2>
-            <div class="timeline">
-                <div class="timeline-item academic">
-                    <div class="timeline-title">Executive Fellow (DBA)</div>
-                    <div class="timeline-org">Indian School of Business, Hyderabad</div>
-                    <div class="timeline-dates">2022 – 2025</div>
+        <div id="education" class="content">
+            <div class="section">
+                <h2>Academic</h2>
+                <div class="edu">
+                    <div>
+                        <div class="edu-degree">Executive Fellow (DBA)</div>
+                        <div class="edu-school">Indian School of Business</div>
+                    </div>
+                    <div class="edu-year">2025</div>
                 </div>
-                <div class="timeline-item academic">
-                    <div class="timeline-title">PGDM (Marketing, Economics, Behavioral Sciences)</div>
-                    <div class="timeline-org">IIM Calcutta</div>
-                    <div class="timeline-dates">1995 – 1997</div>
+                <div class="edu">
+                    <div>
+                        <div class="edu-degree">PGDM</div>
+                        <div class="edu-school">IIM Calcutta</div>
+                    </div>
+                    <div class="edu-year">1997</div>
                 </div>
-                <div class="timeline-item academic">
-                    <div class="timeline-title">BE (Mechanical)</div>
-                    <div class="timeline-org">Osmania University, Hyderabad</div>
-                    <div class="timeline-dates">1991 – 1995</div>
+                <div class="edu">
+                    <div>
+                        <div class="edu-degree">BE (Mechanical)</div>
+                        <div class="edu-school">Osmania University</div>
+                    </div>
+                    <div class="edu-year">1995</div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- Links -->
         <div class="links">
             <a href="https://www.linkedin.com/in/muralikrishnan">LinkedIn</a>
             <a href="https://twitter.com/muralikrishnan">Twitter</a>
             <a href="https://thehawkeye.substack.com">Substack</a>
-            <a href="https://github.com/thehawkeye">GitHub</a>
             <a href="mailto:muralikrishnan@gmail.com">Contact</a>
         </div>
         
         <footer>
-            <p>© 2026 Dr. Muralikrishnan B • muralikrishnan.net</p>
+            <p>© 2026 Dr. Muralikrishnan B</p>
         </footer>
     </div>
+
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>
