@@ -32,8 +32,18 @@
         
         /* Hero */
         .hero {
-            padding: 2.5rem 0 1.5rem;
+            padding: 1.5rem 0 1rem;
             text-align: center;
+        }
+        
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 3px solid var(--bg-card);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
         
         .hero h1 {
@@ -379,6 +389,7 @@
 <body>
     <div class="container">
         <header class="hero">
+            <img src="profile.jpg" alt="Dr. Muralikrishnan B" class="profile-pic">
             <h1>Dr. Muralikrishnan B</h1>
             <p class="tagline">Pracademic — Practitioner • Scholar • Advisor</p>
             
