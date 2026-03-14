@@ -13,7 +13,8 @@
             --text-secondary: #8e8e93;
             --text-muted: #636366;
             --accent: #007aff;
-            --accent-subtle: rgba(0, 122, 255, 0.1);
+            --accent-subtle: rgba(0, 122, 255, 0.15);
+            --accent-active: rgba(0, 122, 255, 0.25);
             --border: rgba(255, 255, 255, 0.08);
         }
         
@@ -27,62 +28,86 @@
             min-height: 100vh;
         }
         
-        .container { max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 1.25rem; }
         
         /* Hero */
         .hero {
-            padding: 3.5rem 0 2rem;
+            padding: 2.5rem 0 1.5rem;
             text-align: center;
         }
         
         .hero h1 {
-            font-size: 2rem;
+            font-size: 1.75rem;
             font-weight: 600;
             letter-spacing: -0.02em;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.2rem;
         }
         
         .hero .tagline {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--text-secondary);
-            margin-bottom: 1.25rem;
+            margin-bottom: 1rem;
         }
         
         .hero-summary {
             color: var(--text-secondary);
-            font-size: 0.9rem;
-            max-width: 520px;
+            font-size: 0.85rem;
+            max-width: 480px;
             margin: 0 auto;
             text-align: left;
         }
         
-        /* Tabs */
-        .tabs {
-            display: flex;
-            gap: 0.2rem;
-            background: var(--bg-elevated);
-            padding: 0.25rem;
-            border-radius: 0.75rem;
+        /* Tab Navigation - Prominent */
+        .nav-tabs {
+            position: sticky;
+            top: 0;
+            background: var(--bg);
+            padding: 0.75rem 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
             margin-bottom: 1.25rem;
-            overflow-x: auto;
         }
+        
+        .tabs-container {
+            display: flex;
+            gap: 0.4rem;
+            overflow-x: auto;
+            padding-bottom: 0.25rem;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .tabs-container::-webkit-scrollbar { display: none; }
         
         .tab {
-            flex: 1;
-            padding: 0.65rem 0.5rem;
-            background: transparent;
-            border: none;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.5rem 0.85rem;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
             color: var(--text-secondary);
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 500;
             cursor: pointer;
-            border-radius: 0.5rem;
-            transition: all 0.2s;
+            border-radius: 2rem;
+            transition: all 0.2s ease;
             white-space: nowrap;
+            flex-shrink: 0;
         }
         
-        .tab:hover { color: var(--text); }
-        .tab.active { background: var(--bg-card); color: var(--text); }
+        .tab-icon { font-size: 0.8rem; }
+        
+        .tab:hover { 
+            color: var(--text); 
+            border-color: var(--text-muted);
+        }
+        
+        .tab.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
         
         /* Content */
         .content { display: none; }
@@ -108,46 +133,46 @@
         .summary-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 0.75rem;
+            gap: 0.6rem;
         }
         
         .summary-card {
             background: var(--bg-card);
             border-radius: 0.6rem;
-            padding: 1rem;
+            padding: 0.85rem;
         }
         
         .summary-card h3 {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             color: var(--accent);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
         
         .summary-card p {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
         }
         
         .expertise-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.4rem;
+            gap: 0.35rem;
         }
         
         .tag {
-            font-size: 0.7rem;
-            padding: 0.25rem 0.5rem;
+            font-size: 0.65rem;
+            padding: 0.2rem 0.45rem;
             background: var(--accent-subtle);
             color: var(--accent);
-            border-radius: 0.3rem;
+            border-radius: 0.25rem;
         }
         
         /* Experience */
         .role {
-            padding: 1rem 0;
+            padding: 0.85rem 0;
             border-bottom: var(--border);
         }
         
@@ -159,176 +184,176 @@
             align-items: baseline;
         }
         
-        .role-title { font-weight: 600; font-size: 0.95rem; }
-        .role-org { color: var(--accent); font-size: 0.85rem; margin: 0.1rem 0; }
-        .role-dates { color: var(--text-muted); font-size: 0.75rem; }
-        .role-details { color: var(--text-secondary); font-size: 0.8rem; margin-top: 0.4rem; }
+        .role-title { font-weight: 600; font-size: 0.9rem; }
+        .role-org { color: var(--accent); font-size: 0.8rem; margin: 0.1rem 0; }
+        .role-dates { color: var(--text-muted); font-size: 0.7rem; }
+        .role-details { color: var(--text-secondary); font-size: 0.8rem; margin-top: 0.35rem; }
         
         /* Education */
         .edu {
             display: flex;
             justify-content: space-between;
-            padding: 0.85rem 0;
+            padding: 0.75rem 0;
             border-bottom: var(--border);
         }
         
         .edu:last-child { border-bottom: none; }
         
-        .edu-degree { font-weight: 500; font-size: 0.9rem; }
-        .edu-school { color: var(--text-secondary); font-size: 0.8rem; }
-        .edu-year { color: var(--text-muted); font-size: 0.8rem; }
+        .edu-degree { font-weight: 500; font-size: 0.85rem; }
+        .edu-school { color: var(--text-secondary); font-size: 0.75rem; }
+        .edu-year { color: var(--text-muted); font-size: 0.75rem; }
         
         /* Research */
         .research-block {
             background: var(--bg-card);
             border-radius: 0.6rem;
-            padding: 1rem;
-            margin-bottom: 0.75rem;
+            padding: 0.9rem;
+            margin-bottom: 0.65rem;
         }
         
         .research-block h3 {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.35rem;
         }
         
         .research-block p {
             color: var(--text-secondary);
-            font-size: 0.8rem;
-            margin-bottom: 0.5rem;
+            font-size: 0.75rem;
+            margin-bottom: 0.4rem;
         }
         
         .research-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.3rem;
+            gap: 0.25rem;
         }
         
         .research-tag {
-            font-size: 0.65rem;
-            padding: 0.2rem 0.4rem;
-            background: rgba(167, 139, 250, 0.1);
+            font-size: 0.6rem;
+            padding: 0.18rem 0.35rem;
+            background: rgba(167, 139, 250, 0.12);
             color: #a78bfa;
-            border-radius: 0.25rem;
+            border-radius: 0.2rem;
         }
         
         .finding {
-            padding: 0.4rem 0;
+            padding: 0.35rem 0;
             color: var(--text-secondary);
-            font-size: 0.8rem;
-            padding-left: 0.75rem;
+            font-size: 0.75rem;
+            padding-left: 0.65rem;
             border-left: 2px solid var(--accent-subtle);
         }
         
         /* Publications */
         .pub {
-            padding: 0.75rem 0;
+            padding: 0.65rem 0;
             border-bottom: var(--border);
         }
         
         .pub:last-child { border-bottom: none; }
         
-        .pub-title { font-weight: 500; font-size: 0.88rem; }
-        .pub-meta { color: var(--text-secondary); font-size: 0.75rem; margin-top: 0.15rem; }
+        .pub-title { font-weight: 500; font-size: 0.82rem; }
+        .pub-meta { color: var(--text-secondary); font-size: 0.7rem; margin-top: 0.1rem; }
         
         /* Teaching */
         .teach {
             display: flex;
             justify-content: space-between;
-            padding: 0.7rem 0;
+            padding: 0.6rem 0;
             border-bottom: var(--border);
         }
         
         .teach:last-child { border-bottom: none; }
         
-        .teach-course { font-weight: 500; font-size: 0.85rem; }
-        .teach-meta { color: var(--text-secondary); font-size: 0.75rem; }
+        .teach-course { font-weight: 500; font-size: 0.8rem; }
+        .teach-meta { color: var(--text-secondary); font-size: 0.7rem; }
         
         /* Advisory */
         .advisory-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 0.6rem;
+            gap: 0.5rem;
         }
         
         .advisory-item {
             background: var(--bg-card);
             border-radius: 0.5rem;
-            padding: 0.75rem;
+            padding: 0.65rem;
         }
         
-        .advisory-role { font-weight: 500; font-size: 0.8rem; }
-        .advisory-org { color: var(--accent); font-size: 0.75rem; margin-top: 0.1rem; }
-        .advisory-dates { color: var(--text-muted); font-size: 0.65rem; margin-top: 0.2rem; }
+        .advisory-role { font-weight: 500; font-size: 0.75rem; }
+        .advisory-org { color: var(--accent); font-size: 0.7rem; margin-top: 0.08rem; }
+        .advisory-dates { color: var(--text-muted); font-size: 0.6rem; margin-top: 0.15rem; }
         
         /* Thought Leadership */
         .thought-block {
             background: var(--bg-card);
             border-radius: 0.6rem;
-            padding: 1rem;
-            margin-bottom: 0.75rem;
+            padding: 0.9rem;
+            margin-bottom: 0.65rem;
         }
         
         .thought-block h3 {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
         
         .thought-topics {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.35rem;
-            margin-bottom: 0.5rem;
+            gap: 0.3rem;
+            margin-bottom: 0.4rem;
         }
         
         .thought-topic {
-            font-size: 0.65rem;
-            padding: 0.2rem 0.5rem;
-            background: rgba(34, 197, 94, 0.1);
+            font-size: 0.6rem;
+            padding: 0.18rem 0.4rem;
+            background: rgba(34, 197, 94, 0.12);
             color: #22c55e;
-            border-radius: 0.25rem;
+            border-radius: 0.2rem;
         }
         
         .thought-stats {
             display: flex;
-            gap: 1rem;
-            margin-top: 0.5rem;
+            gap: 0.85rem;
+            margin-top: 0.4rem;
         }
         
-        .stat { font-size: 0.75rem; }
+        .stat { font-size: 0.7rem; }
         .stat strong { color: var(--text); }
         .stat span { color: var(--text-muted); }
         
         .social-links {
             display: flex;
-            gap: 0.5rem;
-            margin-top: 0.75rem;
+            gap: 0.4rem;
+            margin-top: 0.65rem;
         }
         
         .social-link {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: var(--accent);
             text-decoration: none;
-            padding: 0.3rem 0.6rem;
+            padding: 0.25rem 0.5rem;
             background: var(--accent-subtle);
-            border-radius: 0.3rem;
+            border-radius: 0.25rem;
         }
         
         /* Links */
         .links {
             display: flex;
-            gap: 0.5rem;
+            gap: 0.4rem;
             justify-content: center;
-            padding: 1.5rem 0;
+            padding: 1.25rem 0;
             flex-wrap: wrap;
         }
         
         .links a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.8rem;
-            padding: 0.45rem 0.9rem;
+            font-size: 0.75rem;
+            padding: 0.4rem 0.8rem;
             background: var(--bg-elevated);
             border-radius: 2rem;
             transition: all 0.2s;
@@ -338,17 +363,16 @@
         
         footer {
             text-align: center;
-            padding: 1rem 0 2rem;
+            padding: 1rem 0 1.5rem;
             color: var(--text-muted);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
         }
         
         @media (max-width: 600px) {
-            .hero h1 { font-size: 1.6rem; }
+            .hero h1 { font-size: 1.5rem; }
             .summary-grid { grid-template-columns: 1fr; }
             .advisory-grid { grid-template-columns: 1fr; }
-            .tabs { gap: 0; }
-            .tab { padding: 0.5rem 0.3rem; font-size: 0.65rem; }
+            .tab { padding: 0.4rem 0.65rem; font-size: 0.6rem; }
         }
     </style>
 </head>
@@ -359,75 +383,76 @@
             <p class="tagline">Pracademic — Practitioner • Scholar • Advisor</p>
             
             <div class="hero-summary">
-                Former President of Xiaomi India with 27 years in consumer tech, e-commerce, and digital platforms. Now an independent academic and advisor, bridging theory and practice through doctoral research on platform ecosystems, executive education, and strategic consulting.
+                Former President of Xiaomi India with 27 years in consumer tech, e-commerce, and digital platforms. Now independent academic and advisor.
             </div>
         </header>
 
-        <!-- Summary -->
-        <div class="section">
-            <h2>At a Glance</h2>
-            <div class="summary-grid">
-                <div class="summary-card">
-                    <h3>Expertise</h3>
-                    <div class="expertise-tags">
-                        <span class="tag">Platform Ecosystems</span>
-                        <span class="tag">Consumer Behavior</span>
-                        <span class="tag">Switching Costs</span>
-                        <span class="tag">Network Effects</span>
-                        <span class="tag">Digital Strategy</span>
-                        <span class="tag">Operations</span>
-                    </div>
-                </div>
-                <div class="summary-card">
-                    <h3>Current Focus</h3>
-                    <p>Executive education, doctoral research, startup advisory, and endurance training.</p>
-                </div>
+        <!-- Tab Navigation -->
+        <nav class="nav-tabs">
+            <div class="tabs-container">
+                <button class="tab active" onclick="showTab('summary')">
+                    <span class="tab-icon">📋</span> Summary
+                </button>
+                <button class="tab" onclick="showTab('experience')">
+                    <span class="tab-icon">💼</span> Experience
+                </button>
+                <button class="tab" onclick="showTab('education')">
+                    <span class="tab-icon">🎓</span> Education
+                </button>
+                <button class="tab" onclick="showTab('advisory')">
+                    <span class="tab-icon">🎯</span> Advisory
+                </button>
+                <button class="tab" onclick="showTab('research')">
+                    <span class="tab-icon">📚</span> Research
+                </button>
+                <button class="tab" onclick="showTab('publications')">
+                    <span class="tab-icon">📄</span> Publications
+                </button>
+                <button class="tab" onclick="showTab('teaching')">
+                    <span class="tab-icon">📝</span> Teaching
+                </button>
+                <button class="tab" onclick="showTab('thoughtleadership')">
+                    <span class="tab-icon">💡</span> Thought Leadership
+                </button>
             </div>
-        </div>
-
-        <nav class="tabs">
-            <button class="tab active" onclick="showTab('summary')">Summary</button>
-            <button class="tab" onclick="showTab('experience')">Experience</button>
-            <button class="tab" onclick="showTab('education')">Education</button>
-            <button class="tab" onclick="showTab('advisory')">Advisory</button>
-            <button class="tab" onclick="showTab('research')">Research</button>
-            <button class="tab" onclick="showTab('publications')">Publications</button>
-            <button class="tab" onclick="showTab('teaching')">Teaching</button>
-            <button class="tab" onclick="showTab('thoughtleadership')">Thought Leadership</button>
         </nav>
 
         <!-- Summary Tab -->
         <div id="summary" class="content active">
             <div class="section">
                 <h2>Professional Summary</h2>
-                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
+                <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem;">
                     A senior consumer technology executive with 27+ years building and scaling businesses across e-commerce, retail, and digital platforms. Transitioned to independent academic and advisor, combining practitioner depth with scholarly rigor.
                 </p>
                 
-                <h2 style="margin-top: 1.5rem;">Core Expertise</h2>
+                <h2 style="margin-top: 1.25rem;">Core Expertise</h2>
                 <div class="expertise-tags" style="margin-bottom: 1rem;">
                     <span class="tag">Platform Economics</span>
                     <span class="tag">User Lock-in</span>
                     <span class="tag">Network Effects</span>
                     <span class="tag">Consumer Behavior</span>
                     <span class="tag">Digital Transformation</span>
-                    <span class="tag">Omni-channel Strategy</span>
-                    <span class="tag">Operations Excellence</span>
+                    <span class="tag">Omni-channel</span>
+                    <span class="tag">Operations</span>
                 </div>
                 
-                <h2 style="margin-top: 1.5rem;">Current Activities</h2>
+                <h2 style="margin-top: 1.25rem;">Current Focus</h2>
                 <div class="summary-grid">
                     <div class="summary-card">
-                        <p><strong>Academic:</strong> ISB Executive Fellow, visiting faculty at IIT Kanpur</p>
+                        <h3>Academic</h3>
+                        <p>ISB Executive Fellow, visiting faculty at IIT Kanpur</p>
                     </div>
                     <div class="summary-card">
-                        <p><strong>Advisory:</strong> D2C Super Angels, Code to Enhance Learning, RV University</p>
+                        <h3>Advisory</h3>
+                        <p>D2C Super Angels, Code to Enhance Learning, RV University</p>
                     </div>
                     <div class="summary-card">
-                        <p><strong>Research:</strong> Platform ecosystems, lock-in, portfolio diffusion</p>
+                        <h3>Research</h3>
+                        <p>Platform ecosystems, lock-in, portfolio diffusion</p>
                     </div>
                     <div class="summary-card">
-                        <p><strong>Athletics:</strong> Triathlon training, Ironman 70.3, Boston qualifier chase</p>
+                        <h3>Athletics</h3>
+                        <p>Triathlon training, Ironman 70.3, Boston qualifier</p>
                     </div>
                 </div>
             </div>
@@ -443,7 +468,7 @@
                         <div class="role-dates">2018 – 2024</div>
                     </div>
                     <div class="role-org">Xiaomi India</div>
-                    <div class="role-details">Led operations, services, offline sales, retail & public affairs. Scaled market share and doubled distribution reach.</div>
+                    <div class="role-details">Led operations, services, offline sales, retail & public affairs. Scaled market share and doubled distribution.</div>
                 </div>
                 <div class="role">
                     <div class="role-header">
@@ -551,14 +576,14 @@
                 <h2>Dissertation</h2>
                 <div class="research-block">
                     <h3>The Ecosystem Vortex: Understanding Lock-in in Platform Ecosystems</h3>
-                    <p>ISB DBA (2022–2025). A socio-technical model integrating architectural and behavioral dynamics explaining lock-in through three stages.</p>
+                    <p>ISB DBA (2022–2025). A socio-technical model explaining lock-in through three stages.</p>
                     
-                    <div class="finding">• Lock-in engineered through Entry → Engagement → Entrapment</div>
-                    <div class="finding">• Engagement is decisive (β=0.69): no direct path from adoption to lock-in</div>
+                    <div class="finding">• Lock-in: Entry → Engagement → Entrapment</div>
+                    <div class="finding">• Engagement is decisive (β=0.69)</div>
                     <div class="finding">• Habit beats switching costs 2.6× to 1</div>
                 </div>
                 
-                <h2 style="margin-top: 1.5rem;">Research Interests</h2>
+                <h2 style="margin-top: 1.25rem;">Research Interests</h2>
                 <div class="research-tags">
                     <span class="research-tag">Platform Ecosystems</span>
                     <span class="research-tag">User Lock-in</span>
@@ -567,7 +592,6 @@
                     <span class="research-tag">Portfolio Diffusion</span>
                     <span class="research-tag">Consumer Behavior</span>
                     <span class="research-tag">Habit Formation</span>
-                    <span class="research-tag">Digital Platforms</span>
                 </div>
             </div>
         </div>
@@ -577,15 +601,15 @@
             <div class="section">
                 <h2>Publications</h2>
                 <div class="pub">
-                    <div class="pub-title">BigBasket and Quick Commerce: The Basket is big, but can it get Quicker?</div>
+                    <div class="pub-title">BigBasket and Quick Commerce</div>
                     <div class="pub-meta">Harvard Business School Case (ISB473) • 2025</div>
                 </div>
                 <div class="pub">
-                    <div class="pub-title">Consumer Electronics Retail by Xiaomi</div>
+                    <div class="pub-title">Consumer Electronics Retail</div>
                     <div class="pub-meta">Springer Book Chapter • Future of Retail Management • 2023</div>
                 </div>
                 <div class="pub">
-                    <div class="pub-title">An Exploratory Analysis of Consumers' Digital Focus on Bitcoin</div>
+                    <div class="pub-title">Bitcoin Price & Consumer Behavior</div>
                     <div class="pub-meta">ICIS Workshop on e-Business (WeB 2023) • Dec 2023</div>
                 </div>
             </div>
@@ -619,12 +643,6 @@
                         <div class="teach-meta">ISB LatitudE GCC Program</div>
                     </div>
                 </div>
-                <div class="teach">
-                    <div>
-                        <div class="teach-course">Product Management</div>
-                        <div class="teach-meta">SP Jain Institute</div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -638,7 +656,6 @@
                         <span class="thought-topic">Platform Strategy</span>
                         <span class="thought-topic">India Tech Ecosystem</span>
                         <span class="thought-topic">Electronics Manufacturing</span>
-                        <span class="thought-topic">PLI Schemes</span>
                         <span class="thought-topic">Consumer Behavior</span>
                         <span class="thought-topic">Digital Transformation</span>
                     </div>
@@ -651,10 +668,10 @@
                     <a href="https://thehawkeye.substack.com" class="social-link" style="display: inline-block;">Subscribe →</a>
                 </div>
                 
-                <h2 style="margin-top: 1rem;">Social Presence</h2>
+                <h2 style="margin-top: 1rem;">Social</h2>
                 <div class="thought-stats">
-                    <div class="stat"><strong>10K+</strong> <span>LinkedIn followers</span></div>
-                    <div class="stat"><strong>Twitter</strong> <span>@muralikrishnan</span></div>
+                    <div class="stat"><strong>10K+</strong> <span>LinkedIn</span></div>
+                    <div class="stat"><strong>@muralikrishnan</strong> <span>Twitter</span></div>
                 </div>
                 
                 <div class="social-links">
@@ -682,7 +699,10 @@
             document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
-            event.target.classList.add('active');
+            event.currentTarget.classList.add('active');
+            
+            // Smooth scroll to top
+            document.querySelector('.nav-tabs').scrollIntoView({ behavior: 'smooth' });
         }
     </script>
 </body>
