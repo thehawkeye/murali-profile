@@ -185,12 +185,18 @@
             letter-spacing: 0.05em;
         }
         
-        .tab:hover { color: var(--text-secondary); }
+        .tab:hover { 
+            color: var(--accent); 
+            background: var(--bg-card);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(201, 169, 98, 0.15);
+        }
         
         .tab.active {
             background: var(--accent);
             color: var(--bg-deep);
             font-weight: 500;
+            box-shadow: 0 4px 15px rgba(201, 169, 98, 0.3);
         }
         
         /* Content */
