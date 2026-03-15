@@ -123,6 +123,33 @@
             margin-bottom: 1rem;
         }
         
+        .nav-wrapper {
+            position: relative;
+        }
+        
+        .nav-wrapper::before,
+        .nav-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 30px;
+            pointer-events: none;
+            z-index: 2;
+        }
+        
+        .nav-wrapper::before {
+            left: 0;
+            background: linear-gradient(90deg, var(--bg-deep) 0%, transparent 100%);
+            border-radius: 2rem 0 0 2rem;
+        }
+        
+        .nav-wrapper::after {
+            right: 0;
+            background: linear-gradient(270deg, var(--bg-deep) 0%, transparent 100%);
+            border-radius: 0 2rem 2rem 0;
+        }
+        
         .nav-inner {
             display: flex;
             gap: 0.25rem;
@@ -131,6 +158,7 @@
             background: var(--bg-elevated);
             border-radius: 2rem;
             border: 1px solid var(--border);
+            scroll-padding-left: 0.5rem;
         }
         
         .nav-inner::-webkit-scrollbar { display: none; }
@@ -330,12 +358,14 @@
         </header>
 
         <nav class="nav">
-            <div class="nav-inner">
+            <div class="nav-wrapper">
+                <div class="nav-inner">
                 <button class="tab active" onclick="showTab('summary')">Summary</button>
                 <button class="tab" onclick="showTab('experience')">Experience</button>
                 <button class="tab" onclick="showTab('education')">Education</button>
                 <button class="tab" onclick="showTab('advisory')">Advisory</button>
                 <button class="tab" onclick="showTab('academia')">Academia</button>
+            </div>
             </div>
         </nav>
 
