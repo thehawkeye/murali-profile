@@ -838,6 +838,7 @@
             document.getElementById(tabId).classList.add('active');
             event.target.classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            event.target.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
         }
     </script>
 </body>
