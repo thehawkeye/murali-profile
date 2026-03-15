@@ -126,12 +126,14 @@
         
         /* Navigation */
         .nav {
-            position: sticky;
+            position: fixed;
             top: 0;
-            background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-deep) 80%, transparent 100%);
-            padding: 1.25rem 0 1.5rem;
-            z-index: 50;
-            margin-bottom: 1rem;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, var(--bg-deep) 100%, var(--bg-deep) 90%, transparent 100%);
+            padding: 1rem 0 1.25rem;
+            z-index: 100;
+            margin-bottom: 0;
         }
         
         .nav-wrapper {
@@ -210,7 +212,7 @@
         }
         
         /* Content */
-        .content { display: none; animation: fadeUp 0.5s ease; }
+        .content { display: none; animation: fadeUp 0.5s ease; padding-top: 5rem; }
         .content.active { display: block; }
         
         @keyframes fadeUp {
