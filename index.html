@@ -159,6 +159,13 @@
             border-radius: 2rem;
             border: 1px solid var(--border);
             scroll-padding-left: 0.5rem;
+            justify-content: center;
+        }
+        
+        @media (max-width: 640px) {
+            .nav-inner {
+                justify-content: flex-start;
+            }
         }
         
         .nav-inner::-webkit-scrollbar { display: none; }
