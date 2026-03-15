@@ -69,17 +69,18 @@
             height: 100px;
             border-radius: 50%;
             object-fit: cover;
-            border: 1px solid var(--accent);
+            border: 3px solid var(--accent);
             display: block;
+            box-shadow: 0 0 20px var(--accent-soft), 0 0 40px rgba(201, 169, 98, 0.3);
         }
         
         .profile-glow {
             position: absolute;
-            inset: -8px;
+            inset: -15px;
             border-radius: 50%;
             background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
             animation: glow-pulse 6s ease-in-out infinite;
-            opacity: 0.5;
+            opacity: 0.8;
         }
         
         @keyframes glow-pulse {
