@@ -126,18 +126,86 @@
         
         /* Navigation */
         .nav {
-            position: fixed;
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(180deg, var(--bg-deep) 100%, var(--bg-deep) 90%, transparent 100%);
-            padding: 1rem 0 1.25rem;
+            background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-deep) 80%, transparent 100%);
+            padding: 1.25rem 0 1.5rem;
             z-index: 100;
-            margin-bottom: 0;
+            margin-bottom: 1rem;
         }
         
         .nav-wrapper {
             position: relative;
+        }
+        
+        /* Sticky Connect Button */
+        .connect-btn {
+            position: fixed;
+            right: 1.5rem;
+            bottom: 1.5rem;
+            transform: none;
+            z-index: 200;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--bg-elevated);
+            border: 1px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .connect-btn:hover {
+            background: var(--accent);
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 600px) {
+            .connect-btn {
+                right: 1rem;
+                bottom: 1rem;
+                width: 44px;
+                height: 44px;
+            }
+        }
+        
+        .connect-btn svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--accent);
+            stroke-width: 1.5;
+            fill: none;
+            transition: all 0.3s ease;
+        }
+        
+        .connect-btn:hover svg {
+            stroke: var(--bg-deep);
+        }
+        
+        .connect-btn::after {
+            content: 'Connect with me';
+            position: absolute;
+            bottom: 58px;
+            right: 0;
+            background: var(--bg-elevated);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            border: 1px solid var(--accent);
+        }
+        
+        .connect-btn:hover::after {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .nav-wrapper::before,
@@ -212,7 +280,7 @@
         }
         
         /* Content */
-        .content { display: none; animation: fadeUp 0.5s ease; padding-top: 5rem; }
+        .content { display: none; animation: fadeUp 0.5s ease; }
         .content.active { display: block; }
         
         @keyframes fadeUp {
@@ -396,6 +464,15 @@
             </div>
             </div>
         </nav>
+
+        <a href="https://calendly.com/muralikrishnan-maf9/catch-up-with-murali?month=2026-03" class="connect-btn" target="_blank" title="Book a meeting">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+        </a>
 
         <div id="summary" class="content active">
             <div class="card">
